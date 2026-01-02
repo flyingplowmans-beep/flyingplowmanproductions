@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact | Flying Plowman Productions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="index.html"><img src="assets/img/logo.png" alt="Flying Plowman Productions"></a>
+  <nav class="nav">
+    <a href="about.html">About</a>
+    <a href="productions.html">Productions</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="main">
+  <h1>Contact</h1>
+
+  <div class="card">
+    <p>Email:</p>
+    <p>
+      <a href="mailto:hello@flyingplowmanproductions.co.uk"
+         style="color:#fff;text-shadow: var(--outline);text-decoration:none;">
+        hello@flyingplowmanproductions.co.uk
+      </a>
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Send a message</h2>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <p><input name="name" placeholder="Name" required style="width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.35);color:#fff;"></p>
+      <p><input type="email" name="email" placeholder="Email" required style="width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.35);color:#fff;"></p>
+      <p><textarea name="message" placeholder="Message" required rows="6" style="width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.35);color:#fff;"></textarea></p>
+      <p><button type="submit" style="padding:12px 18px;border-radius:999px;border:2px solid #fff;background:transparent;color:#fff;">Send</button></p>
+    </form>
+    <p style="opacity:0.8;">To make the form work, create a free Formspree form and replace <code>YOUR_FORM_ID</code>.</p>
+  </div>
+</main>
+
+</body>
+</html>
