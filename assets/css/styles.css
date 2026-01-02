@@ -1,0 +1,147 @@
+/* Base */
+:root{
+  --outline: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
+}
+
+*{ box-sizing:border-box; }
+body{
+  margin:0;
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  color:#fff;
+  background:#000;
+}
+
+/* Header */
+.site-header{
+  position: sticky;
+  top:0;
+  z-index: 9999;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 14px 18px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(10px);
+}
+
+.logo img{
+  height: 34px;
+  width:auto;
+  display:block;
+  filter: invert(1); /* remove if your logo is already white */
+}
+
+/* Nav buttons */
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content: space-evenly;
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+
+.nav a{
+  color:#fff;
+  text-decoration:none;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.nav a:hover{
+  background:#fff;
+  color:#000;
+}
+
+@media (max-width: 640px){
+  .site-header{ padding: 10px 12px; }
+  .logo img{ height: 26px; }
+  .nav{ gap: 8px; }
+  .nav a{ font-size: 12px; padding: 8px 10px; }
+}
+
+/* Hero with blurred parallax background */
+.hero{
+  position: relative;
+  min-height: 80vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 80px 16px 60px;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image: var(--hero-url);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* parallax-ish on desktop */
+  filter: blur(6px);
+  transform: scale(1.08); /* prevents blur edges showing */
+  z-index:0;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.35);
+  z-index:0;
+}
+
+/* Mobile: background-attachment fixed is unreliable, so switch to normal */
+@media (max-width: 820px){
+  .hero::before{ background-attachment: scroll; filter: blur(5px); }
+}
+
+/* Content on top of hero */
+.hero-inner{
+  position: relative;
+  z-index:1;
+  width: min(1000px, 100%);
+  text-align:center;
+}
+
+/* Quote rotator */
+.rotator{
+  margin-top: 10px;
+}
+
+.rotator-quote{
+  font-size: clamp(20px, 2.6vw, 40px);
+  line-height: 1.15;
+  max-width: 92%;
+  margin: 0 auto;
+  text-shadow: var(--outline);
+}
+
+.rotator-meta{
+  margin-top: 8px;
+  font-size: clamp(14px, 1.6vw, 22px);
+  font-style: italic;
+  text-shadow: var(--outline);
+}
+
+/* Page sections */
+.main{
+  padding: 44px 16px 80px;
+  width: min(1000px, 100%);
+  margin: 0 auto;
+}
+
+.card{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 18px;
+  margin: 14px 0;
+}
+
+h1,h2{ margin: 0 0 12px; text-shadow: var(--outline); }
+p{ margin: 0 0 12px; opacity: 0.95; }
