@@ -7,7 +7,7 @@
 
   // Edit quotes here. durationMs can differ per quote.
   const slides = [
-    { quote: "“Brilliantly Moving”", meta: "Rated Reviewed", durationMs: 5000 },
+    { quote: "“Brilliantly Moving”", meta: "Rated Reviewed", durationMs: 4000 },
     { quote: "“The performances are glorious in the intimate space, telling this beautiful, reflective play that deserves a wider audience”", meta: "Fairypowered Productions ★★★★", durationMs: 7000 },
     { quote: "“Devastating, absorbing theatre that refuses easy answers or redemption. It sits with discomfort, honours complexity, and lingers long after leaving. This is essential viewing”", meta: "Everything Theatre ★★★★", durationMs: 8000 },
     { quote: "“From my seat in the front row, I felt completely immersed in the story — as though I were sitting in Kathleen’s family home or waiting beside Vanessa in the adoption clinic”", meta: "Theatre and Tonic ★★★★", durationMs: 8000 },
@@ -15,7 +15,7 @@
     { quote: "“Plowman delivers a truly phenomenal performance… breathtaking”", meta: "Everything Theatre ★★★★", durationMs: 7000 }
   ];
 
-  const fadeMs = 450;
+  const fadeMs = 420;
   let i = 0;
   let timer = null;
 

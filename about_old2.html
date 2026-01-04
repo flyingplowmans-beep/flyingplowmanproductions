@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Flying Plowman Productions</title>
+  <title>Flying Plowman Productions — About</title>
 
-  <!-- Load Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -25,45 +24,34 @@
     <a href="contact.html">Contact</a>
   </nav>
 </header>
-<section class="hero" id="hero">
-  <div class="hero-bg" aria-hidden="true"></div>
+
+<!-- ABOUT uses its own class so we can style it without touching index -->
+<section class="about-hero" id="about-hero">
+  <div class="bg-about" aria-hidden="true"></div>
   <div class="hero-overlay" aria-hidden="true"></div>
 
-  <div class="hero-inner hero-controls">
-    <img class="hero-logo" src="assets/img/High-Resolution-Logo-White-on-Black-Background.png" alt="Flying Plowman Productions">
-
-    <div id="press-rotator" class="rotator">
-      <div class="rotator-quote"></div>
-      <div class="rotator-meta"></div>
+  <main class="main">
+    <!-- put your collage/text here -->
+    <div class="collage-wrap">
+      <!-- Your collage markup goes here (left, center text, right) -->
+      <!-- (Paste your existing collage-wrap contents inside here) -->
     </div>
-  </div>
+  </main>
+
+  <footer class="site-footer">
+    <img class="footer-logo" src="assets/img/High-Resolution-Logo-White-on-Black-Background.png" alt="Flying Plowman Productions">
+    <a class="footer-email" href="mailto:sarita@flyingplowmanproductions.co.uk">
+      sarita@flyingplowmanproductions.co.uk
+    </a>
+  </footer>
 </section>
-
-
-
-<footer class="site-footer">
-      <img class="footer-logo" src="assets/img/High-Resolution-Logo-White-on-Black-Background.png" alt="Flying Plowman Productions">
-
-
-<a class="footer-email" href="mailto:flyingplowmans@gmail.com"
-   >
- flyingplowmans@gmail.com
-</a>
-</footer>
-
-
-
-<script src="assets/js/quotes.js"></script>
-
-
 
 <script>
 (function(){
-  const hero = document.getElementById("hero");
-  const bg = hero && hero.querySelector(".hero-bg");
+  const hero = document.getElementById("about-hero");
+  const bg = hero && hero.querySelector(".bg-about");
   if(!hero || !bg) return;
 
-  const strength = 1.35; // increase to 0.25 for stronger parallax
   let ticking = false;
 
   function update(){
@@ -71,13 +59,15 @@
     const rect = hero.getBoundingClientRect();
     const vh = window.innerHeight;
 
-    // amount hero has moved through viewport (-vh .. +vh-ish)
+    // 0..1-ish as you scroll through the hero
     const scrollThrough = (vh - rect.top) / (vh + rect.height);
     const clamped = Math.max(0, Math.min(1, scrollThrough));
 
-    // map to -1..+1 then scale in pixels
+    // -1..+1
     const t = (clamped * 2) - 1;
-    const offset = t * 380; // px travel range
+
+    // travel range (px). adjust 140..320
+    const offset = t * 220;
 
     bg.style.transform = `translate3d(0, ${offset}px, 0) scale(1.08)`;
   }

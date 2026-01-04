@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Productions | Flying Plowman Productions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="index.html"><img src="assets/img/logo.png" alt="Flying Plowman Productions"></a>
+  <nav class="nav">
+    <a href="about.html">About</a>
+    <a href="productions.html">Productions</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="main">
+  <h1>Productions</h1>
+
+  <div id="media-rotator" data-interval="5000" data-fade="500">
+  <div class="media-frame">
+    <img class="media-image is-active" src="assets/img/p0.jpeg" alt="">
+     <img class="media-image" src="assets/img/p1.jpg" alt="">
+    <img class="media-image" src="assets/img/p2.jpg" alt="">
+    <img class="media-image" src="assets/img/p3.jpg" alt="">
+    <img class="media-image" src="assets/img/p4.jpg" alt="">
+        <img class="media-image" src="assets/img/p5.jpg" alt="">
+            <img class="media-image" src="assets/img/p6.jpg" alt="">
+                <img class="media-image" src="assets/img/p7.jpg" alt="">
+                    <img class="media-image" src="assets/img/p8.jpg" alt="">
+                        <img class="media-image" src="assets/img/p9.jpg" alt="">
+                            <img class="media-image" src="assets/img/p10.jpg" alt="">
+                                <img class="media-image" src="assets/img/p11.jpg" alt="">
+  </div>
+
+  <div class="text-frame">
+    <div class="pair is-active">
+      <div class="quote-line">“Brilliantly Moving”</div>
+      <div class="meta-line">Rated Reviewed</div>
+    </div>
+
+    <div class="pair">
+      <div class="quote-line">“The performances are glorious in the intimate space…”</div>
+      <div class="meta-line">Fairypowered Productions ★★★★</div>
+    </div>
+
+    <div class="pair">
+      <div class="quote-line">“Devastating, absorbing theatre that refuses easy answers…”</div>
+      <div class="meta-line">Everything Theatre ★★★★</div>
+    </div>
+
+    <div class="pair">
+      <div class="quote-line">“From my seat in the front row, I felt completely immersed…”</div>
+      <div class="meta-line">Theatre and Tonic ★★★★</div>
+    </div>
+
+    <div class="pair">
+      <div class="quote-line">“A profoundly moving piece of theatre…”</div>
+      <div class="meta-line">London Theatre 1 ★★★★</div>
+    </div>
+
+    <div class="pair">
+      <div class="quote-line">“Plowman delivers a truly phenomenal performance…”</div>
+      <div class="meta-line">Everything Theatre ★★★★</div>
+    </div>
+  </div>
+  
+</div>
+
+<style>
+/* ----- IMAGE ----- */
+.media-frame{
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.media-image{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+.media-image.is-active{
+  opacity: 1;
+}
+
+/* ----- TEXT ----- */
+.text-frame{
+  position: relative;
+  min-height: 6em;
+  margin-top: 24px;
+}
+
+.pair{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 500ms ease;
+  text-align: center;
+
+  color:#fff;
+  text-shadow:
+    -3px -3px 0 #000,
+     3px -3px 0 #000,
+    -3px  3px 0 #000,
+     3px  3px 0 #000;
+}
+
+.pair.is-active{
+  opacity: 1;
+}
+
+.quote-line{
+  font-family: "Poppins", Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  line-height: 1.25;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.meta-line{
+  font-family: "Poppins", Helvetica, Arial, sans-serif;
+  font-style: italic;
+  font-size: 16px;
+  margin-top: 6px;
+}
+
+/* Mobile tuning */
+@media (max-width: 640px){
+  .quote-line{ font-size: 18px; }
+  .meta-line{ font-size: 14px; }
+}
+</style>
+<script>
+(function(){
+  const root = document.getElementById("media-rotator");
+  if(!root) return;
+
+  const interval = Number(root.dataset.interval) || 5000;
+  const fade = Number(root.dataset.fade) || 500;
+
+  const images = Array.from(root.querySelectorAll(".media-image"));
+  const pairs  = Array.from(root.querySelectorAll(".pair"));
+
+  if(images.length === 0) return;
+  if(pairs.length === 0) return;
+
+  // Ensure only one active at start (keeps things predictable)
+  images.forEach((el, idx) => el.classList.toggle("is-active", idx === 0));
+  pairs.forEach((el, idx) => el.classList.toggle("is-active", idx === 0));
+
+  let imgI = 0;
+  let txtI = 0;
+
+  setInterval(() => {
+    // fade out current
+    images[imgI].classList.remove("is-active");
+    pairs[txtI].classList.remove("is-active");
+
+    // advance (images go through ALL; quotes wrap independently)
+    imgI = (imgI + 1) % images.length;
+    txtI = (txtI + 1) % pairs.length;
+
+    // fade in next after fade time
+    setTimeout(() => {
+      images[imgI].classList.add("is-active");
+      pairs[txtI].classList.add("is-active");
+    }, fade);
+
+  }, interval);
+})();
+</script>
+
+
+</main>
+
+</body>
+</html>

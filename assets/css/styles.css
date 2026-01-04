@@ -13,23 +13,54 @@ body{
 
 /* Header */
 .site-header{
-  position: sticky;
-  top:0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 9999;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding: 14px 18px;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(10px);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 3px 3px;
+  background: rgba(0,0,0,0.8);
 }
 
-.logo img{
-  height: 34px;
-  width:auto;
-  display:block;
-  filter: invert(1); /* remove if your logo is already white */
+/* Nav buttons */
+.custom-nav a {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 16px;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 2px solid #fff;
+  margin-left: 1px;
+  text-decoration: none;
 }
+
+.custom-nav a:hover {
+  background: #fff;
+  color: #000;
+}
+.custom-nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.custom-nav a {
+  padding: 12px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+}
+header.header {
+  display: none;
+}
+
+
+
 
 /* Nav buttons */
 .nav{
@@ -61,51 +92,138 @@ body{
   .logo img{ height: 26px; }
   .nav{ gap: 8px; }
   .nav a{ font-size: 12px; padding: 8px 10px; }
+  
 }
 
-/* Hero with blurred parallax background */
+
 .hero{
   position: relative;
-  min-height: 80vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding: 80px 16px 60px;
-  overflow:hidden;
+  height: 100vh;          /* full viewport height */
+  min-height: 100svh;     /* mobile-safe viewport */
+  width: 100%;
+  overflow: hidden;
 }
 
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image: var(--hero-url);
+
+.hero-bg{
+  position: absolute;
+  inset: 10vh 0;          /* extra height for parallax movement */
+  background-image: url("../img/bg-home.jpg");
   background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* parallax-ish on desktop */
-  filter: blur(6px);
-  transform: scale(1.08); /* prevents blur edges showing */
-  z-index:0;
+  background-position: center 40%;
+  transform: translate3d(0,0,0) scale(1.08);
+  filter: blur(3px);
+  will-change: transform;
+  z-index: 0;
 }
 
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: rgba(0,0,0,0.35);
-  z-index:0;
+.bg-about{
+  position: absolute;
+  inset: 20vh 0;          /* extra height for parallax movement */
+  background-image: url("../img/bg-about.jpg");
+  background-size: cover;
+  background-position: center 40%;
+  transform: translate3d(0,0,0) scale(1.08);
+  filter: blur(2px);
+  will-change: transform;
+  z-index: 0;
 }
 
-/* Mobile: background-attachment fixed is unreliable, so switch to normal */
-@media (max-width: 820px){
-  .hero::before{ background-attachment: scroll; filter: blur(5px); }
+.hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 1;
+  display: none;
 }
 
-/* Content on top of hero */
+
 .hero-inner{
   position: relative;
-  z-index:1;
-  width: min(1000px, 100%);
-  text-align:center;
+  z-index: 2;
+  width: min(1000px, 92vw);
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 110px;   /* controls vertical placement */
+}
+
+
+
+/* Easy controls (change these) */
+.hero-controls{
+  --top: 80px;          /* distance from top of hero (below header) */
+  --logo: 310px;         /* logo height */
+  --quote: 34px;        /* main quote size */
+  --meta: 20px;         /* meta size */
+}
+
+/* Move the whole block up/down */
+.hero-controls{
+  position: absolute;
+  top: var(--top);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1000px, 92vw);
+  text-align: center;
+  z-index: 2;
+  padding: 0 16px;
+}
+
+.hero-logo{
+  width: var(--logo);
+  height: var(--logo);
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 16px;
+  /* filter: invert(1);   /* makes black logo white */
+}
+
+.footer-logo{
+  height:170px;
+  width: auto;
+  margin-left: 10%;
+}
+
+.site-footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0px, 0px;
+  background: #000;
+}
+
+
+.footer-email{
+  color: #fff;
+  text-decoration: none;
+  font-size: 26px;
+  text-shadow: var(--outline);
+  margin-right: 15%;
+}
+.footer-email:hover{
+  text-decoration: underline;
+}
+
+
+/* Quote sizes (easy to change) */
+.rotator-quote{
+  font-size: var(--quote);
+}
+
+.rotator-meta{
+  font-size: var(--meta);
+}
+
+/* Mobile tuning (optional) */
+@media (max-width: 640px){
+  .hero-controls{
+    --top: 70px;
+    --logo: 52px;
+    --quote: 22px;
+    --meta: 14px;
+  }
 }
 
 /* Quote rotator */
@@ -145,3 +263,8 @@ body{
 
 h1,h2{ margin: 0 0 12px; text-shadow: var(--outline); }
 p{ margin: 0 0 12px; opacity: 0.95; }
+
+.site-header .logo img{
+  filter: invert(1);
+  height: 60px;
+}
