@@ -7,12 +7,12 @@
 
   // Edit quotes here. durationMs can differ per quote.
   const slides = [
-    { quote: "“Brilliantly Moving”", meta: "Rated Reviewed", durationMs: 4000 },
-    { quote: "“The performances are glorious in the intimate space, telling this beautiful, reflective play that deserves a wider audience”", meta: "Fairypowered Productions ★★★★", durationMs: 7000 },
-    { quote: "“Devastating, absorbing theatre that refuses easy answers or redemption. It sits with discomfort, honours complexity, and lingers long after leaving. This is essential viewing”", meta: "Everything Theatre ★★★★", durationMs: 8000 },
-    { quote: "“From my seat in the front row, I felt completely immersed in the story — as though I were sitting in Kathleen’s family home or waiting beside Vanessa in the adoption clinic”", meta: "Theatre and Tonic ★★★★", durationMs: 8000 },
-    { quote: "“A profoundly moving piece of theatre… it achieves moments of quiet, breathtaking power”", meta: "London Theatre 1 ★★★★", durationMs: 7000 },
-    { quote: "“Plowman delivers a truly phenomenal performance… breathtaking”", meta: "Everything Theatre ★★★★", durationMs: 7000 }
+    { quote: "“Brilliantly Moving”", meta: "Rated Reviewed", durationMs: 2000 },
+    { quote: "“The performances are glorious in the intimate space, telling this beautiful, reflective play that deserves a wider audience”", meta: "Fairypowered Productions ★★★★", durationMs: 4000 },
+    { quote: "“Devastating, absorbing theatre that refuses easy answers or redemption. It sits with discomfort, honours complexity, and lingers long after leaving. This is essential viewing”", meta: "Everything Theatre ★★★★", durationMs: 5000 },
+    { quote: "“From my seat in the front row, I felt completely immersed in the story — as though I were sitting in Kathleen’s family home or waiting beside Vanessa in the adoption clinic”", meta: "Theatre and Tonic ★★★★", durationMs: 5000 },
+    { quote: "“A profoundly moving piece of theatre… it achieves moments of quiet, breathtaking power”", meta: "London Theatre 1 ★★★★", durationMs: 4500 },
+    { quote: "“Plowman delivers a truly phenomenal performance… breathtaking”", meta: "Everything Theatre ★★★★", durationMs: 3500 }
   ];
 
   const fadeMs = 420;

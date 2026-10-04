@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Flying Plowman Productions</title>
+
+  <!-- Load Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="index-v1.html">
+    <img src="assets/img/Icon-Only-Black.png" alt="Flying Plowman Productions">
+  </a>
+
+  <nav class="custom-nav">
+    <a href="about-v1.html">About</a>
+    <a href="productions-v1.html">Productions</a>
+    <a href="contact-v1.html">Contact</a>
+  </nav>
+</header>
+<section class="hero" id="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="hero-inner hero-controls">
+    <img class="hero-logo" src="assets/img/High-Resolution-Logo-White-on-Black-Background.png" alt="Flying Plowman Productions">
+
+    <div id="press-rotator" class="rotator">
+      <div class="rotator-quote"></div>
+      <div class="rotator-meta"></div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer class="site-footer">
+      <img class="footer-logo" src="assets/img/High-Resolution-Logo-White-on-Black-Background.png" alt="Flying Plowman Productions">
+
+
+<a class="footer-email" href="mailto:flyingplowmans@gmail.com"
+   >
+ flyingplowmans@gmail.com
+</a>
+</footer>
+
+
+
+<script src="assets/js/quotes.js"></script>
+
+
+
+<script>
+(function(){
+  const hero = document.getElementById("hero");
+  const bg = hero && hero.querySelector(".hero-bg");
+  if(!hero || !bg) return;
+
+  const strength = 1.35; // increase to 0.25 for stronger parallax
+  let ticking = false;
+
+  function update(){
+    ticking = false;
+    const rect = hero.getBoundingClientRect();
+    const vh = window.innerHeight;
+
+    // amount hero has moved through viewport (-vh .. +vh-ish)
+    const scrollThrough = (vh - rect.top) / (vh + rect.height);
+    const clamped = Math.max(0, Math.min(1, scrollThrough));
+
+    // map to -1..+1 then scale in pixels
+    const t = (clamped * 2) - 1;
+    const offset = t * 380; // px travel range
+
+    bg.style.transform = `translate3d(0, ${offset}px, 0) scale(1.08)`;
+  }
+
+  function onScroll(){
+    if(!ticking){
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }
+
+  update();
+  window.addEventListener("scroll", onScroll, { passive:true });
+  window.addEventListener("resize", update);
+})();
+</script>
+
+</body>
+</html>

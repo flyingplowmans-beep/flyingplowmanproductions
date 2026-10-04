@@ -268,3 +268,35 @@ p{ margin: 0 0 12px; opacity: 0.95; }
   filter: invert(1);
   height: 60px;
 }
+
+/* Phone layout (desktop unaffected) */
+@media (max-width: 640px){
+  /* Header: keep all three buttons on screen */
+  .site-header .logo img{ height: 36px; }
+  .custom-nav{ justify-content: flex-end; gap: 6px; }
+  .custom-nav a{
+    font-size: 13px;
+    padding: 8px 12px;
+    white-space: nowrap;
+  }
+
+  /* Hero: bigger logo, keep the actor's face in frame */
+  .hero-controls{
+    --top: 76px;
+    --logo: 170px;
+  }
+  .hero-bg{ background-position: 36% 40%; }
+  .rotator-quote,
+  .rotator-meta{
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  }
+
+  /* Footer: stack logo above email */
+  .site-footer{
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px 16px 32px;
+  }
+  .footer-logo{ height: 110px; margin: 0; }
+  .footer-email{ font-size: 18px; margin: 0; text-shadow: none; }
+}
